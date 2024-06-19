@@ -1,19 +1,13 @@
 using Microsoft.EntityFrameworkCore;
+using CyberPong.PongAPI.Models;
 
-public class AppDbContext : DbContext
+namespace CyberPong.PongAPI.Data
 {
-    public DbSet<Player> Players { get; set; }
-    public DbSet<Score> Scores { get; set; }
-
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    public class AppDbContext : DbContext
     {
-        modelBuilder.Entity<Player>().HasKey(p => p.Id);
-        modelBuilder.Entity<Score>().HasKey(s => s.Id);
-        modelBuilder.Entity<Score>()
-            .HasOne(s => s.Player)
-            .WithMany(p => p.Scores)
-            .HasForeignKey(s => s.PlayerId);
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+
+        public DbSet<Player> Players { get; set; }
+        public DbSet<Score> Scores { get; set; }
     }
 }
