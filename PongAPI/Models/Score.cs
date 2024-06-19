@@ -1,9 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using System;
 
-public class Score
+namespace CyberPong.PongAPI.Models
 {
-    public int Id { get; set; }
-    public int PlayerId { get; set; }
-    public Player Player { get; set; }
-    public int Points { get; set; }
-    public DateTime Date { get; set; }
+    public class Score
+    {
+        public int Id { get; set; }
+        public int PlayerId { get; set; }
+        public Player Player { get; set; }
+        public int Points { get; set; }
+        public DateTime Date { get; set; } // Adicionado o using para DateTime
+    }
 }
